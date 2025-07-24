@@ -1,0 +1,96 @@
+{% extends 'static_pages/base_account.html' %}
+{% block start %}
+
+<br>
+<div class="row">
+
+  <!-- Customer Actions -->
+  <div class="col-md">
+    <div class="card card-body">
+      <h5>Customer:</h5>
+      <hr>
+      <a class="btn mb-2 btn-outline-info btn-sm btn-block" href="">
+        Update Customer
+      </a>
+      <a class="btn mu-2 btn-outline-danger btn-sm btn-block" href="">
+        Delete Customer
+      </a>
+    </div>
+  </div>
+
+  <!-- Contact Information -->
+  <div class="col-md">
+    <div class="card card-body">
+      <h5>Contact Information</h5>
+      <hr>
+      <p>Email: </p>
+      <p>Phone: </p>
+    </div>
+  </div>
+
+  <!-- Total Orders -->
+  <div class="col-md">
+    <div class="card card-body">
+      <h5>Total Orders</h5>
+      <hr>
+      <h1 style="text-align: center; padding: 10px;"></h1>
+    </div>
+  </div>
+<div class="container mt-5">
+  <!-- Search Form -->
+  <div class="row mb-4">
+    <div class="col">
+      <div class="card card-body">
+        <form method="get">
+          <div class="input-group">
+            <input type="text" name="q" class="form-control" placeholder="Search by product or status...">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md">
+      <div class="card card-body">
+        <h5 class="mb-3">Order List</h5>
+        <table class="table table-sm table-bordered table-hover">
+          <thead class="table-light">
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Date Ordered</th>
+              <th>Status</th>
+              <th>Update</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+            <tr>
+              <td>{{ order.product.name }}</td>
+              <td>{{ order.product.category }}</td>
+              <td>{{ order.date_created }}</td>
+              <td>{{ order.status }}</td>
+              <td>
+                <a href="{% url 'update_order' order.id %}" class="btn btn-warning btn-sm">Update</a>
+              </td>
+              <td>
+                <a href="{% url 'delete_order' order.id %}" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="6" class="text-center">No orders found.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
