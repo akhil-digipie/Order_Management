@@ -32,6 +32,7 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+#Order class
 class Order(models.Model):
     STATUS =(
         ('Pending', 'Pending'),
