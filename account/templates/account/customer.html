@@ -1,41 +1,45 @@
 {% extends 'static_pages/base_account.html' %}
 {% block start %}
 
-<br>
+<div class="www">
+  <br>
 <div class="row">
-
-  <!-- Customer Actions -->
-  <div class="col-md">
-    <div class="card card-body">
-      <h5>Customer:</h5>
-      <hr>
-      <a class="btn mb-2 btn-outline-info btn-sm btn-block" href="">
-        Update Customer
-      </a>
-      <a class="btn mu-2 btn-outline-danger btn-sm btn-block" href="">
-        Delete Customer
-      </a>
+    <!-- Customer Actions -->
+    <div class="col-md">
+      <div class="www card card-body">
+        <h5>Customer:</h5>
+        <hr>
+        <a class="btn mb-2 btn-outline-info btn-sm btn-block" href="">
+          Update Customer
+        </a>
+        <a class="btn mu-2 btn-outline-danger btn-sm btn-block" href="">
+          Delete Customer
+        </a>
+      </div>
     </div>
-  </div>
 
-  <!-- Contact Information -->
-  <div class="col-md">
-    <div class="card card-body">
-      <h5>Contact Information</h5>
-      <hr>
-      <p>Email: </p>
-      <p>Phone: </p>
+    <!-- Contact Information -->
+    <div class="col-md">
+      <div class="www card card-body">
+        <h5>Contact Information</h5>
+        <hr>
+        <p>Name : {{cust.name}}</p>
+        <p>Email: {{cust.email}}</p>
+        <p>Phone: {{cust.phone}}</p>
+      </div>
     </div>
-  </div>
 
-  <!-- Total Orders -->
-  <div class="col-md">
-    <div class="card card-body">
-      <h5>Total Orders</h5>
-      <hr>
-      <h1 style="text-align: center; padding: 10px;"></h1>
+    <!-- Total Orders -->
+    <div class="col-md">
+      <div class="www card card-body">
+        <h5>Total Orders</h5>
+        <hr>
+        <h5>{{ orders.count }}</h5>
+      </div>
     </div>
+
   </div>
+</div>
 <div class="container mt-5">
   <!-- Search Form -->
   <div class="row mb-4">
@@ -69,15 +73,15 @@
           <tbody>
             {% for order in orders %}
             <tr>
-              <td>{{ order.product.name }}</td>
+              <td>{{ order.product }}</td>
               <td>{{ order.product.category }}</td>
               <td>{{ order.date_created }}</td>
               <td>{{ order.status }}</td>
               <td>
-                <a href="{% url 'update_order' order.id %}" class="btn btn-warning btn-sm">Update</a>
+                <a href="" class="btn btn-warning btn-sm">Update</a>
               </td>
               <td>
-                <a href="{% url 'delete_order' order.id %}" class="btn btn-danger btn-sm">Delete</a>
+                <a href="" class="btn btn-danger btn-sm">Delete</a>
               </td>
             </tr>
             {% empty %}

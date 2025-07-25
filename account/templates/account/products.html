@@ -3,27 +3,25 @@
 <div class="row mt-5">
     <div class="col-md-12">
         <hr>
-        <div class="card card-body">
-            <h5>Products</h5>
-            <div class="card card-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+           <table class="table">
+              <thead>
+                 <tr>
+                     <th>Product</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                 </tr>
+              </thead>
+               <tbody>
+                    {% for product in products %}
+                     <tr>
+                        <td>{{product.name}}</td>
+                        <td>{{product.category}}</td>
+                         <td>{{product.price}}</td>
+                     </tr>
+                    {% endfor %}
+               </tbody>
+           </table>
     </div>
 </div>
+
 {% endblock %}

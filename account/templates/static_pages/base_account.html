@@ -10,13 +10,15 @@
 
 
 </head>
-<body>
-    {% include 'static_pages/navbar.html' %}
-    <hr>
-      {% block start %}
+    <body>
+        <div class="container">
+            {% include 'static_pages/navbar.html' %}
+            <hr>
+              {% block start %}
 
-      {% endblock %}
-    <hr>
-    {% include 'static_pages/footer.html' %}
-</body>
+              {% endblock %}
+            <hr>
+            {% include 'static_pages/footer.html' %}
+        </div>
+    </body>
 </html>

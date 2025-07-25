@@ -1,6 +1,6 @@
 {% extends 'static_pages/base_account.html' %}
 {% block start %}
-<div class="container">
+<!--<div class="container">-->
     {% include 'account/status.html' %}
     <div class="row mt-5">
         <!-- Customers Section -->
@@ -15,14 +15,18 @@
                     <thead>
                         <tr>
                             <th>Customer</th>
-                            <th>Orders</th>
+                            <th>Phone</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                    {% for customer in customers %}
                         <tr>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{ customer.name }}</td>
+                            <td>{{ customer.phone }}</td>
+                            <td><a href="{% url 'customer' customer.id %}">View</a></td>
                         </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -47,13 +51,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for order in orders %}
                         <tr>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
+                            <td>{{ order.product }}</td>
+                            <td>{{ order.date_created }}</td>
+                            <td>{{ order.status }}</td>
+                            <td><a class="btn btn-sm btn-info" href="">Update</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="">Delete</a></td>
                         </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
