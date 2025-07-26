@@ -1,8 +1,9 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
-from .forms import ModelForm
+from .forms import ModelForm, OrderForm
+
 
 def home(request):
     orders = Order.objects.all()
@@ -38,5 +39,25 @@ def view_customer_list(request):
     return render(request, 'account/view_customers_list.html', {'customers': customers})
 
 def createOrder(request):
-    context = {}
+    form = OrderForm()
+    if request.method == 'POST':
+        # print('Printing POST: ', request.POST)
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    context = {'form' : form}
     return render(request, 'account/order_form.html', context)
+
+def updateOrder(request):
+    form = OrderForm()
+
+    context = {'form': form}
+    return render(request, 'account/update_form.html', context)
+
+def deleteOrder(request):
+    form = OrderForm()
+
+    context = {'form': form}
+    return render(request, 'account/delete_form.html', context)
+
