@@ -2,6 +2,7 @@ from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
+from .forms import ModelForm
 
 def home(request):
     orders = Order.objects.all()
@@ -36,3 +37,6 @@ def view_customer_list(request):
 
     return render(request, 'account/view_customers_list.html', {'customers': customers})
 
+def createOrder(request):
+    context = {}
+    return render(request, 'account/order_form.html', context)
