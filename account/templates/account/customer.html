@@ -12,6 +12,9 @@
         <a class="btn mb-2 btn-outline-info btn-sm btn-block" href="">
           Update Customer
         </a>
+        <a class="btn mu-2 btn-outline-info btn-sm btn-block" href="{% url 'create_order' cust.id%}">
+          Place Order
+        </a>
         <a class="btn mu-2 btn-outline-danger btn-sm btn-block" href="">
           Delete Customer
         </a>
@@ -47,9 +50,9 @@
       <div class="card card-body">
         <form method="get">
           <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Search by product or status...">
-            <button class="btn btn-primary" type="submit">Search</button>
+            {{ myFilter.form }}
           </div>
+          <button class="btn btn-primary" type="submit">Search</button>
         </form>
       </div>
     </div>
@@ -77,12 +80,8 @@
               <td>{{ order.product.category }}</td>
               <td>{{ order.date_created }}</td>
               <td>{{ order.status }}</td>
-              <td>
-                <a href="" class="btn btn-warning btn-sm">Update</a>
-              </td>
-              <td>
-                <a href="" class="btn btn-danger btn-sm">Delete</a>
-              </td>
+              <td><a class="btn btn-sm btn-info" href="{% url 'update_form' order.id %}">Update</a></td>
+              <td><a class="btn btn-sm btn-danger" href="{% url 'delete_form' order.id %}">Remove</a></td>
             </tr>
             {% empty %}
             <tr>

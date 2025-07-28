@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+</head>
+<body>
+<h1>Registration Page</h1>
+<form action="" method="post"></form>
+    {% csrf_token %}
+    {% for fields in form %}
+      {{ fields }}
+    {% endfor %}
+<br>
+<input type="submit" name="CreateUser">
+</body>
+</html>

@@ -1,11 +1,17 @@
 {% extends 'static_pages/base_account.html' %}
 {% block start %}
-
-<p>Are you sure want to delete "{{item}}"?</p>
-<form action="" method="post">
-  <a href="{% url 'home' %}">Cancel</a>
-  <input type="submit" name="Confirm">
-</form>
-
+<br>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card card-body">
+      <p>Are you sure want to delete "{{item}}"?</p>
+        <form action="{% url 'delete_form' item.id %}" method="post">
+          {%  csrf_token %}
+          <a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
+          <input class="btn btn-danger" type="submit" name="Confirm">
+        </form>
+    </div>
+  </div>
+</div>
 
 {% endblock%}
