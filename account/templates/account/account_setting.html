@@ -18,13 +18,15 @@
       <hr>
       <h3 style="text-align: center" >Account Setting</h3>
       <hr>
-      <img class="profile-pic" src="" alt="Profile Image">
+      <img class="profile-pic" src="{{request.user.customer.profile_pic.url}}" alt="Profile Image">
     </div>
   </div>
   <div class="col-md-9">
     <div class="card card-body">
-      <form action="" method="post">
-        <input class="btn btn-primary" type="submit" value="" name="Update Information">
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit" value="" name="Update Information">Submit</button>
       </form>
     </div>
   </div>
